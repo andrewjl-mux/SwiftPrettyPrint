@@ -42,8 +42,7 @@ class PrettyDescriberTests: XCTestCase {
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
             let date = formatter.date(from: "2020-03-24 10:00:00 +0900")!
 
-            let pretty = PrettyDescriber(formatter: SinglelineFormatter(),
-                                         timeZone: TimeZone(identifier: "Asia/Tokyo")!)
+            let pretty = PrettyDescriber(formatter: SinglelineFormatter())
 
             assert(to: pretty.string) {
                 args(date, false, expect: "2020-03-24 10:00:00")

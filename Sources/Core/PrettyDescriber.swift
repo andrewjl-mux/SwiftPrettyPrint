@@ -21,7 +21,6 @@
 struct PrettyDescriber {
     var formatter: PrettyFormatter
     var theme: ColorTheme = .plain
-    var timeZone: TimeZone = .current
 
     func string<T: Any>(_ target: T, debug: Bool) -> String {
         func _string(_ target: Any) -> String {
@@ -370,14 +369,14 @@ struct PrettyDescriber {
                 let f = DateFormatter()
                 #if !os(WASI)
                     f.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
-                    f.timeZone = timeZone
+
                 #endif
                 return theme.type("Date") + #"("\#(f.string(from: date))")"#
             } else {
                 let f = DateFormatter()
                 #if !os(WASI)
                     f.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                    f.timeZone = timeZone
+                    
                 #endif
                 return f.string(from: date)
             }
